@@ -5,6 +5,7 @@ const create = (req, res) => {
 
     farm.name = req.body.name;
     farm.farmImage = req.body.farmImage;
+    farm.description = req.body.description;
     farm.adress.street = req.body.adress.street;
     farm.adress.streetnumber = req.body.adress.streetnumber;
     farm.adress.zipcode = req.body.adress.zipcode;

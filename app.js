@@ -10,6 +10,7 @@ const config = require('config');
 
 const indexRouter = require('./routes/index');
 const farmsRouter = require('./routes/api/farms');
+const packagesRouter = require('./routes/api/packages');
 // const usersRouter = require('./routes/users');
 
 // mongodb://localhost:27017/plantenpluk24
@@ -33,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(cors());
 app.use('/', indexRouter);
 app.use('/api/farms', farmsRouter);
+app.use('/api/packages', packagesRouter);
 // app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
