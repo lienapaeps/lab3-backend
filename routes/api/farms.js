@@ -8,4 +8,7 @@ router.get('/', farmsController.getAll);
 // create farm
 router.post("/", farmsController.create);
 
+// get farm by id
+router.get("/:id", farmsController.getById);
+
 module.exports = router;

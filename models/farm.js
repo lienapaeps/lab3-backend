@@ -6,36 +6,52 @@ const farmSchema = new Schema ({
         type: String,
         required: true
     },
-    street: {
+    farmImage: {
         type: String,
         required: true
     },
-    streetnumber: {
-        type: String,
-        required: true
+    adress: {
+        street: {
+            type: String,
+            required: true
+        },
+        streetnumber: {
+            type: String,
+            required: true
+        },
+        zipcode: {
+            type: String,
+            required: true
+        },
+        city: {
+            type: String,
+            required: true
+        }
     },
-    postalcode: {
-        type: String,
-        required: true
-    },
-    city: {
-        type: String,
-        required: true
-    },
-    phonenumber: {
-        type: String,
-        required: true
-    },
-    location: {
-        "lat": {
+    coordinates: {
+        latitude: {
             type: Number,
             required: true
         },
-        "lng": {
+        longitude: {
             type: Number,
             required: true
         }
     },
+    openinghours: [{
+        day: {
+            type: String,
+            required: true
+        },
+        openinghour: {
+            type: String,
+            // required: true
+        },
+        closinghour: {
+            type: String,
+            // required: true
+        }
+    }]
 })
 
 const Farm = mongoose.model('Farm', farmSchema);

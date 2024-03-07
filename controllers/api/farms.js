@@ -4,12 +4,14 @@ const create = (req, res) => {
     let farm = new Farm();
 
     farm.name = req.body.name;
-    farm.street = req.body.street;
-    farm.streetnumber = req.body.streetnumber;
-    farm.postalcode = req.body.postalcode;
-    farm.city = req.body.city;
-    farm.phonenumber = req.body.phonenumber;
-    farm.location = req.body.location;
+    farm.farmImage = req.body.farmImage;
+    farm.adress.street = req.body.adress.street;
+    farm.adress.streetnumber = req.body.adress.streetnumber;
+    farm.adress.zipcode = req.body.adress.zipcode;
+    farm.adress.city = req.body.adress.city;
+    farm.coordinates.latitude = req.body.coordinates.latitude;
+    farm.coordinates.longitude = req.body.coordinates.longitude;
+    farm.openinghours = req.body.openinghours;
 
     farm.save()
         .then(doc => {
@@ -50,5 +52,27 @@ const getAll = (req, res) => {
         })
 }
 
+const getById = (req, res) => {
+    Farm.findById(req.params.id)
+        .then(doc => {
+            res.json({
+                "status": "success",
+                "message": "Boerderij gevonden met id: " + req.params.id,
+                "data": {
+                    "farm": doc
+                }
+            })
+        })
+        .catch(err => {
+            res.json({
+                "status": "error",
+                "message": "Boerderij niet gevonden",
+                "error": err
+            })
+        })
+
+}
+
 module.exports.create = create;
 module.exports.getAll = getAll;
+module.exports.getById = getById;
