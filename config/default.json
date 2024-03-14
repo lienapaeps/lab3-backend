@@ -1,5 +1,8 @@
 {
     "Database": {
         "conn": "mongodb://localhost:27017/plantenpluk24"
+    },
+    "jwt": {
+        "secret": "secret"
     }
 }
