@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const User = new Schema({
+    packages: [{ type: Schema.Types.ObjectId, ref: 'Package' }],
     firstname: {
         type: String,
         required: true
@@ -10,7 +11,7 @@ const User = new Schema({
     lastname: {
         type: String,
         required: true
-    }    
+    }
 });
 
 User.plugin(passportLocalMongoose, {

@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const farmsRouter = require('./routes/api/farms');
 const packagesRouter = require('./routes/api/packages');
 const usersRouter = require('./routes/users');
+const activitiesRouter = require('./routes/api/activities');
 
 // mongodb://localhost:27017/plantenpluk24
 
@@ -36,6 +37,7 @@ app.use('/', indexRouter);
 app.use('/api/farms', farmsRouter);
 app.use('/api/packages', packagesRouter);
 app.use('/users', usersRouter);
+app.use('/api/activities', activitiesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

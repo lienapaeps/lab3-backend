@@ -3,11 +3,13 @@ const Farm = require("../../models/farm")
 const create = (req, res) => {
     let farm = new Farm();
 
+    // farm.owner = req.user._id;
+    farm.owner = req.body.owner;
     farm.name = req.body.name;
     farm.farmImage = req.body.farmImage;
     farm.description = req.body.description;
     farm.adress.street = req.body.adress.street;
-    farm.adress.streetnumber = req.body.adress.streetnumber;
+    farm.adress.number = req.body.adress.number;
     farm.adress.zipcode = req.body.adress.zipcode;
     farm.adress.city = req.body.adress.city;
     farm.coordinates.latitude = req.body.coordinates.latitude;
@@ -71,9 +73,37 @@ const getById = (req, res) => {
                 "error": err
             })
         })
-
 }
+
+// get activities by farm id
+const getActivities = (req, res) => {
+
+    const farmId = req.params.id;
+
+    Farm.findById(farmId)
+        .populate('activities')
+        .then(doc => {
+            res.json({
+                "status": "success",
+                "message": "Activiteiten gevonden voor boerderij met id: " + farmId,
+                "data": {
+                    "activities": doc.activities
+                }
+            })
+        })
+        .catch(err => {
+            res.json({
+                "status": "error",
+                "message": "Activiteiten niet gevonden voor boerderij met id: " + farmId,
+                "error": err
+            })
+        })
+}
+
+//update farm by id
 
 module.exports.create = create;
 module.exports.getAll = getAll;
 module.exports.getById = getById;
+module.exports.getActivities = getActivities;
+// module.exports.update = update;

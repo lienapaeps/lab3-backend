@@ -11,4 +11,10 @@ router.post("/", farmsController.create);
 // get farm by id
 router.get("/:id", farmsController.getById);
 
+// get all activities
+router.get("/:id/activities", farmsController.getActivities);
+
+// update farm by id
+// router.put("/:id", farmsController.update);
+
 module.exports = router;

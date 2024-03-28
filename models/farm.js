@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const farmSchema = new Schema ({
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+    members: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }],
+    activities: [{ type: Schema.Types.ObjectId, ref: 'Activity' }],
+    packages: [{ type: Schema.Types.ObjectId, ref: 'Package' }],
+    
     name: {
         type: String,
         required: true
@@ -19,7 +25,7 @@ const farmSchema = new Schema ({
             type: String,
             required: true
         },
-        streetnumber: {
+        number: {
             type: String,
             required: true
         },
@@ -55,7 +61,7 @@ const farmSchema = new Schema ({
             type: String,
             // required: true
         }
-    }]
+    }],
 })
 
 const Farm = mongoose.model('Farm', farmSchema);

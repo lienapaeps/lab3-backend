@@ -12,13 +12,13 @@ const signup = async (req, res) => {
     let address = {
         street: req.body.street,
         number: req.body.number,
-        postalcode: req.body.postalcode,
+        zipcode: req.body.zipcode,
         city: req.body.city
     }
 
     User.register(new User({email: email, firstname: firstname, lastname: lastname}), password, function(err, user) { 
         // alle velden leeg
-        if (email === "" || password === "" || firstname === "" || lastname === "" || password === "" || telephone === "" || address.street === "" || address.number === "" || address.postalcode === "" || address.city === "") {
+        if (email === "" || password === "" || firstname === "" || lastname === "" || password === "" || telephone === "" || address.street === "" || address.number === "" || address.zipcode === "" || address.city === "") {
             return res.json({
                 "status": "error",
                 "message": "Vul alle velden in"
